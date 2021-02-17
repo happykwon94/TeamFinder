@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -10,27 +10,55 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<link rel="stylesheet" href="/TeamFinder/css/main.css" />
+<link rel="stylesheet" href="/TeamFinder/css/toFindTeamCreate.css" />
 <title>구해줘 팀즈</title>
 </head>
 	<body class="is-preload">
 
 		<!-- Header -->
-			<header id="header">
-				<a class="logo" href="index.html">Industrious</a>
-				<nav>
-					<a href="#menu">Menu</a>
-				</nav>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="elements.html">팀원 찾기</a></li>
-					<li><a href="/TeamFinder/toFindTeam">팀 찾기</a></li>
-				</ul>
-			</nav>
+		<header id="header">
+			<a class="logo" href="index">구해줘 팀즈</a>
+			
+			<c:choose>	
+				<c:when test="${sessionScope.loginCheck eq true}">
+			       ${sessionScope.id} 님이 로그인 되었습니다.
+			       <nav>
+				       	<a href="#menu">메뉴</a>
+				       
+				       	<nav id="menu">
+							<ul class="links">
+								<li><a href="index">Home</a></li>
+								<li><a href="modifyUser">마이 페이지</a></li>
+								<li><a href="toFindMate">팀원 구하기</a></li>
+								<li><a href="toFindTeam">팀 찾기</a></li>
+								<li><a id="logOut">로그 아웃</a></li>
+							</ul>
+						</nav>
+					</nav> 
+			       	<script type="text/javascript">
+							document.querySelector('#logOut').addEventListener('click', function(){
+								alert('로그아웃 되었습니다.');
+								location.href="/TeamFinder/logout.do";
+							});	
+					</script>		       
+				</c:when>
+				 <c:otherwise>
+					<nav>
+						<a href="#menu">로그인</a>
+						
+						<!-- Nav -->
+						<nav id="menu">
+							<ul class="links">
+								<li><a href="index">Home</a></li>
+								<li><a href="login">로그인</a></li>
+								<li><a href="signUp">회원가입</a></li>
+							</ul>
+						</nav>
+						
+					</nav>
+				 </c:otherwise>
+			</c:choose>
+		</header>
 
 		<!-- Heading -->
 			<div id="heading" >
@@ -42,56 +70,91 @@
 				<div class="inner">
 					<div class="mainContent">
 						<header>
-							<h2>Post</h2>
+							<h2>게시글 작성 (팀원 찾기)</h2>
 						</header>
-						<div class="highlights" style="background:E6E6E6;" >
-							<c:set var="post" value="${post}">
-								<table class="tableLayout">
-														
-									<tr id="firstLine">
-										<td class="label" rowspan="2">제 목</td>
-										<td class="labelVal" rowspan="2" colspan="2">${post.title}</td>
-										<td class="emptySpace" rowspan="2" colspan="7"></td>				
-									</tr>
-									<tr>	
-									</tr>				
-									<tr>
-										<td class="label">글쓴이</td>
-										<td class="labelVal" colspan="2">${post.user.user_id}</td>
-										<td class="emptySpace" colspan="7"></td>	
-									</tr>
-									<tr>
-										<td class="label">활동 지역</td>
-										<td class="labelVal" colspan="2">${post.region}</td>
-										<td class="emptySpace" colspan="7"></td>							
-									</tr>
-									<tr>
-										<td class="label">기술 스택</td>
-										<td class="labelVal" colspan="2">${post.project_stack}</td>
-										<td class="emptySpace" colspan="7"></td>								
-									</tr>
-									<tr>
-										<td class="label">미팅 방식</td>
-										<td class="labelVal" colspan="2">${post.meeting_method}</td>
-										<td class="emptySpace" colspan="7"></td>								
-									</tr>
-									<tr>
-										<td class="label">예상 기간</td>
-										<td class="labelVal" colspan="2">${post.project_period}</td>
-										<td class="emptySpace" colspan="7"></td>								
-									</tr>
-									<tr>
-										<td colspan="10" class="context">${post.context}</td>
-									</tr>		
-								</table>
-							</c:set>						
-						</div>
-						<div class="highlights" style="background:blue; height: 200px;">
-							<div>리뷰</div>
-						</div>
-						<div class="highlights" style="background:green; height: 100px;">
-							<div>댓글</div>
-						</div>					
+						<form action="addMatePost" method="post" id="addMatePostForm">
+							<input type="hidden" name="board_type" value="0"/>
+							<!-- 추후 회원 session에서 꺼내야 됌 -->
+							<input type="hidden" name="user_index" value="${sessionScope.user_index}"/>
+							<table>
+								<tr>
+									<td><h3>주제</h3></td>
+									<td><input type="text" name="title"></td>
+								</tr>
+								<tr>
+									<td><h3>모집 인원</h3></td>
+									<td>  
+										<select name="recruiting_number" form="addMatePostForm">
+										    <option value="1">1</option>
+										    <option value="2">2</option>
+										    <option value="3">3</option>
+										    <option value="4">4</option>
+										    <option value="5">5</option>
+									  </select>
+									 </td>
+								</tr>
+								<tr>
+									<td><h3>활동 지역</h3></td>
+									<td>
+										<select form="addMatePostForm" name="region">
+										    <option value="서울">서울</option>
+										    <option value="부산">부산</option>
+										    <option value="대구">대구</option>
+										    <option value="대전">대전</option>
+										    <option value="광주">광주</option>
+										    <option value="울산">울산</option>
+										    <option value="제주">제주</option>
+										    <option value="충청">충청도</option>
+										    <option value="경상">경상도</option>
+										    <option value="전라">전라도</option>
+										    <option value="강원">강원도</option>
+										    <option value="경기">경기도</option>
+									  	</select>
+									</td>
+								</tr>
+								<tr>
+									<td><h3>기술 스택</h3></td>
+									<td><input type="text" name="project_stack"></td>
+								</tr>
+								<tr>
+									<td><h3>미팅 방식</h3></td>
+									<td>
+										<select form="addMatePostForm" name="meeting_method">
+										    <option value="대면">대면</option>
+										    <option value="비대면">비대면</option>
+									  	</select>								
+									</td>
+								</tr>
+								<tr>
+									<td><h3>예상 기간</h3></td>
+									<td>
+										<select form="addMatePostForm" name="project_period">
+											<option value="1달 미만">1달 미만</option>
+											<option value="1달 이상">1달 이상</option>
+											<option value="3달 이상">3달 이상</option>
+											<option value="6달 이상">6달 이상</option>
+											<option value="1년 이상">1년 이상</option>										
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td><h3>이미지</h3></td>
+									<td><input type="file"></td>
+								</tr>
+								<tr>
+									<td><h3>내용</h3></td>
+									<td>
+										<textarea name="context" form="addMatePostForm"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<input type="submit" value="작성 완료">
+									</td>
+								</tr>
+							
+							</table>
+						</form>
 					</div>
 				</div>
 			</section>

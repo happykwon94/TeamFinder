@@ -22,9 +22,9 @@ public class PostTest {
 	public void addPost() throws Exception{
 		
 		Post post = new Post();
-		post.setTitle("주제1");
+		post.setTitle("tesdsf");
 		post.setUser_index(1);
-		post.setContext("본문1");
+		post.setContext("asdfasdf");
 		post.setProject_period("3달 이상");
 		post.setRegion("경기도");
 		post.setMeeting_method("비대면");
@@ -34,7 +34,7 @@ public class PostTest {
 		
 		System.out.println(post);
 		
-		//postMapper.addPost(post);
+		postMapper.addPost(post);
 	}
 	
 	@Test

@@ -15,21 +15,49 @@
 <body class="is-preload">
 
 		<!-- Header -->
-			<header id="header">
-				<a class="logo" href="index.html">Industrious</a>
-				<nav>
-					<a href="#menu">Menu</a>
-				</nav>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="elements.html">팀원 찾기</a></li>
-					<li><a href="/TeamFinder/toFindTeam">팀 찾기</a></li>
-				</ul>
-			</nav>
+		<header id="header">
+			<a class="logo" href="index">구해줘 팀즈</a>
+			
+			<c:choose>	
+				<c:when test="${sessionScope.loginCheck eq true}">
+			       ${sessionScope.id} 님이 로그인 되었습니다.
+			       <nav>
+				       	<a href="#menu">메뉴</a>
+				       
+				       	<nav id="menu">
+							<ul class="links">
+								<li><a href="index">Home</a></li>
+								<li><a href="modifyUser">마이 페이지</a></li>
+								<li><a href="toFindMate">팀원 구하기</a></li>
+								<li><a href="toFindTeam">팀 찾기</a></li>
+								<li><a id="logOut">로그 아웃</a></li>
+							</ul>
+						</nav>
+					</nav> 
+			       	<script type="text/javascript">
+							document.querySelector('#logOut').addEventListener('click', function(){
+								alert('로그아웃 되었습니다.');
+								location.href="/TeamFinder/logout.do";
+							});	
+					</script>		       
+				</c:when>
+				 <c:otherwise>
+					<nav>
+						<a href="#menu">로그인</a>
+						
+						<!-- Nav -->
+						<nav id="menu">
+							<ul class="links">
+								<li><a href="index">Home</a></li>
+								<li><a href="login">로그인</a></li>
+								<li><a href="signUp">회원가입</a></li>
+							</ul>
+						</nav>
+						
+					</nav>
+				 </c:otherwise>
+			</c:choose>
+		</header>
 
 		<!-- Heading -->
 			<div id="heading" >
@@ -41,9 +69,9 @@
 				<div class="inner">
 					<div class="mainContent">
 						<header>
-							<h2>게시글 작성</h2>
+							<h2>게시글 ${sessionScope.user_index} 작성 (팀 구하기)</h2>
 						</header>
-						<form action="addPost" method="post" id="addPostForm">
+						<form action="addPost" method="POST" id="addPostForm">
 							<input type="hidden" name="board_type" value="1"/>
 							<!-- 추후 회원 session에서 꺼내야 됌 -->
 							<input type="hidden" name="user_index" value="${sessionScope.user_index}"/>

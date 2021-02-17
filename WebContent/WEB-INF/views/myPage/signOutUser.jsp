@@ -1,20 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="kr.co.multi.teamfinder.dto.User"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+
+<!DOCTYPE HTML>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Generic Page - Industrious by TEMPLATED</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link rel="stylesheet" href="/TeamFinder/css/toFindTeamDetail.css" />
-</head>
+	<head>
+		<title>구해줘 팀즈</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="/TeamFinder/css/main.css" />
+		<link rel="stylesheet" href="/TeamFinder/css/table.css" />
+    	<link rel="stylesheet" href="/TeamFinder/css/font-awesome.min.css" />
+		<script src="/TeamFinder/js/signOutUser.js"></script>
+
+	</head>
 	<body class="is-preload">
 
-<!-- Header -->
+		<!-- Header -->
 		<header id="header">
 			<a class="logo" href="index">구해줘 팀즈</a>
 			
@@ -58,65 +63,35 @@
 				 </c:otherwise>
 			</c:choose>
 		</header>
+
 		<!-- Heading -->
 			<div id="heading" >
-				<h1>Generic Page</h1>
+				<h1>회원 탈퇴</h1>	
 			</div>
+
 
 		<!-- Main -->
 			<section id="main" class="wrapper">
 				<div class="inner">
-					<div class="mainContent">
-						<header>
-							<h2>Post</h2>
-						</header>
-						<div class="highlights" style="background:E6E6E6;" >
-								<table class="tableLayout">
-														
-									<tr id="firstLine">
-										<td class="label" rowspan="2">제 목</td>
-										<td class="labelVal" rowspan="2" colspan="2">${post.title}</td>
-										<td class="emptySpace" rowspan="2" colspan="7"></td>				
-									</tr>
-									<tr>	
-									</tr>				
-									<tr>
-										<td class="label">글쓴이</td>
-										<td class="labelVal" colspan="2">${post.user.user_id}</td>
-										<td class="emptySpace" colspan="7"></td>	
-									</tr>
-									<tr>
-										<td class="label">활동 지역</td>
-										<td class="labelVal" colspan="2">${post.region}</td>
-										<td class="emptySpace" colspan="7"></td>							
-									</tr>
-									<tr>
-										<td class="label">기술 스택</td>
-										<td class="labelVal" colspan="2">${post.project_stack}</td>
-										<td class="emptySpace" colspan="7"></td>								
-									</tr>
-									<tr>
-										<td class="label">미팅 방식</td>
-										<td class="labelVal" colspan="2">${post.meeting_method}</td>
-										<td class="emptySpace" colspan="7"></td>								
-									</tr>
-									<tr>
-										<td class="label">예상 기간</td>
-										<td class="labelVal" colspan="2">${post.project_period}</td>
-										<td class="emptySpace" colspan="7"></td>								
-									</tr>
-									<tr>
-										<td class="label">본 문</td>
-										<td colspan="9" class="context">${post.context}</td>
-									</tr>		
-								</table>
-						</div>
-						<div class="highlights" style="background:blue; height: 200px;">
-							<div>리뷰</div>
-						</div>
-						<div class="highlights" style="background:green; height: 100px;">
-							<div>댓글</div>
-						</div>					
+					<div class="content" align="center">
+						<img src="/TeamFinder/images/user.jpg" height="100" width="100">
+						<br>
+						<form action="signOut" method="post">
+						 ${sessionScope.id}&nbsp;님 
+						<br><br>
+							<input type="button" value="회원탈퇴" id="singOut" >
+							<script type="text/javascript">
+								document.getElementById("singOut").onclick = function() {
+									if(confirm("정말 탈퇴하시겠습니까?")==true){
+										this.form.submit();
+									}
+									else{
+										location.href="/TeamFinder/signOutUser";
+									}
+									
+								}
+							</script>
+						</form>
 					</div>
 				</div>
 			</section>
@@ -155,11 +130,12 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="/TeamFinder/js/jquery.min.js"></script>
-			<script src="/TeamFinder/js/browser.min.js"></script>
-			<script src="/TeamFinder/js/breakpoints.min.js"></script>
-			<script src="/TeamFinder/js/util.js"></script>
-			<script src="/TeamFinder/js/main.js"></script>
+    <script src="/TeamFinder/js/jquery.min.js"></script>
+    <script src="/TeamFinder/js/browser.min.js"></script>
+    <script src="/TeamFinder/js/breakpoints.min.js"></script>
+    <script src="/TeamFinder/js/util.js"></script>
+    <script src="/TeamFinder/js/main.js"></script>
+    <script src="/TeamFinder/js/secession.js"></script>
 
 	</body>
 </html>

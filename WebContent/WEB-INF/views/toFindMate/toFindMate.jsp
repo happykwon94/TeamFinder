@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="kr.co.multi.teamfinder.dto.Post"%>
 <%@ page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,116 +13,106 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<link rel="stylesheet" href="/TeamFinder/css/main.css" />
+<link rel="stylesheet" href="/TeamFinder/css/toFindMate.css" />
 <title>구해줘 팀즈</title>
 
 </head>
 <body class="is-preload">
-	<!-- Header -->
-	<header id="header">
-		<a class="logo" href="index.html">Industrious</a>
-		<nav>
-			<a href="#menu">Menu</a>
-		</nav>
-	</header>
+	
+		<!-- Header -->
+		<header id="header">
+			<a class="logo" href="index">구해줘 팀즈</a>
+			
+			<c:choose>	
+				<c:when test="${sessionScope.loginCheck eq true}">
+			       ${sessionScope.id} 님이 로그인 되었습니다.
+			       <nav>
+				       	<a href="#menu">메뉴</a>
+				       
+				       	<nav id="menu">
+							<ul class="links">
+								<li><a href="index">Home</a></li>
+								<li><a href="modifyUser">마이 페이지</a></li>
+								<li><a href="toFindMate">팀원 구하기</a></li>
+								<li><a href="toFindTeam">팀 찾기</a></li>
+								<li><a id="logOut">로그 아웃</a></li>
+							</ul>
+						</nav>
+					</nav> 
+			       	<script type="text/javascript">
+							document.querySelector('#logOut').addEventListener('click', function(){
+								alert('로그아웃 되었습니다.');
+								location.href="/TeamFinder/logout.do";
+							});	
+					</script>		       
+				</c:when>
+				 <c:otherwise>
+					<nav>
+						<a href="#menu">로그인</a>
+						
+						<!-- Nav -->
+						<nav id="menu">
+							<ul class="links">
+								<li><a href="index">Home</a></li>
+								<li><a href="login">로그인</a></li>
+								<li><a href="signUp">회원가입</a></li>
+							</ul>
+						</nav>
+						
+					</nav>
+				 </c:otherwise>
+			</c:choose>
+		</header>
 
-	<!-- Banner -->
-	<section id="banner">
+		<!-- Heading -->
+			<div id="heading" >
+				<h1>구해줘 팀즈</h1>
+				<h4>너가 찾던 그 사람, 여기 다 있어</h4>
+			</div>
+	
+	<!-- Main -->
+	<section id="main" class="wrapper">
 		<div class="inner">
-			<h1>Industrious</h1>
-			<p>
-				A responsive business oriented template with a video background<br />
-				designed by <a href="https://templated.co/">TEMPLATED</a> and
-				released under the Creative Commons License.
-			</p>
-		</div>
-		<video autoplay loop muted playsinline src="images/banner.mp4"></video>
-	</section>
-	<!-- Highlights -->
-	<section class="wrapper">
-		<div class="inner">
-			<header class="special">
-				<h2>Sem turpis amet semper</h2>
-				<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id
-					enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet
-					accumsan erat tempus amet porttitor.</p>
-			</header>
-			<div class="highlights">
-				<section>
-						<div class="content">
-						<header>
-							<a href="#" class="icon fa-vcard-o"><span class="label">Icon</span></a>
-							<h3>구해줘 팀즈</h3>
-
-						</header>
-
-					</div>
-				</section>
-				<section>
-					<div class="content">
-						<header>
-							<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-							<h3>Ante sem integer</h3>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum
-							adipiscing gravida odio porttitor sem non mi integer non
-							faucibus.</p>
-					</div>
-				</section>
-				<section>
-					<div class="content">
-						<header>
-							<a href="#" class="icon fa-floppy-o"><span class="label">Icon</span></a>
-							<h3>Ipsum consequat</h3>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum
-							adipiscing gravida odio porttitor sem non mi integer non
-							faucibus.</p>
-					</div>
-				</section>
-				<section>
-					<div class="content">
-						<header>
-							<a href="#" class="icon fa-line-chart"><span class="label">Icon</span></a>
-							<h3>Interdum gravida</h3>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum
-							adipiscing gravida odio porttitor sem non mi integer non
-							faucibus.</p>
-					</div>
-				</section>
-				<section>
-					<div class="content">
-						<header>
-							<a href="#" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
-							<h3>Faucibus consequat</h3>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum
-							adipiscing gravida odio porttitor sem non mi integer non
-							faucibus.</p>
-					</div>
-				</section>
-				<section>
-					<div class="content">
-						<header>
-							<a href="#" class="icon fa-qrcode"><span class="label">Icon</span></a>
-							<h3>Accumsan viverra</h3>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum
-							adipiscing gravida odio porttitor sem non mi integer non
-							faucibus.
-					</div>
-				</section>
+			<div class="mainContent">
+				
+				<!-- view Info -->
+				<header>
+					<h2>팀원 구해요</h2>
+				</header>
+				<div class="highlights">
+					<c:forEach var="post" items="${posts}">
+						<section>
+							<div class="content">
+								<header>
+									<form action="getPost" method="get" id="getPostForm${post.post_id}">
+										<input type="hidden" name="post_id" value="${post.post_id}">
+										<a onclick="document.getElementById('getPostForm${post.post_id}').submit();" class="icon fa-vcard-o" style="vertical-align: middle"><span class="label">Icon</span></a><span style="vertical-align: middle">&nbsp${post.user.user_id}</span>
+										<h3>${post.title}</h3>
+									</form>
+								</header>
+								<p>
+									${post.region} / ${post.meeting_method} / ${post.project_stack} / ${post.project_period}
+								</p>
+								
+								<hr/>
+								<p> 0일전 업데이트</p>
+							</div>
+						</section>
+					</c:forEach>
+				</div>
+				
+				<hr/>
+				
+				<!-- paging -->
+				
+				
+				<p align="right">
+					<button type = "button" onclick="location.href='/TeamFinder/toFindMateCreate'">작성하기</button>
+				</p>
 			</div>
 		</div>
 	</section>
 
-
-	<section>
-		<p align="right">
-			<button type = "button" onclick="location.href='./join'">작성하기</button>
-		</p>
-	</section>
 	<!-- Footer -->
 	<footer id="footer">
 		<div class="inner">

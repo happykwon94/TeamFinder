@@ -24,17 +24,16 @@ public class UserService {
 	}
 	
 	public User login(User user) {
-		int returnValue = 0;
 		
+		User result = null;
 		
 		try {
-			userMapper.login(user);
+			result = userMapper.login(user);
 		} catch (Exception e) {
 			e.printStackTrace();
-			returnValue =  0;
 		}
 		
-		return null;
+		return result;
 	}
 
 	public int joinUser(User user) throws RuntimeException{

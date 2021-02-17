@@ -33,7 +33,7 @@ CREATE SEQUENCE USER_SEQ START WITH 1 INCREMENT BY 1 MAXVALUE 10000 MINVALUE 1;
 CREATE TABLE board(
    post_id number primary key,
    title  VARCHAR2(60) not null,
-   user_index references users(user_index),
+   user_index references users(user_index) on delete cascade,
    context VARCHAR2(500) not null,
    project_period varchar2(20) not null,
    region varchar2(20) not null,
@@ -47,7 +47,7 @@ CREATE TABLE board(
    
 CREATE TABLE team(
    team_id number primary key,   --unique + not null   , index 생성
-   post_id references board(post_id),     -- 한글 3바이트 차지
+   post_id references board(post_id) on delete cascade,     -- 한글 3바이트 차지
    max_person number not null,
    leader_id number not null,
    title varchar2(50) not null,
@@ -55,14 +55,14 @@ CREATE TABLE team(
 );
 CREATE TABLE member(
    member_id number primary key,   --unique + not null   , index 생성
-   team_id references team(team_id),     -- 한글 3바이트 차지
+   team_id references team(team_id) on delete cascade,     -- 한글 3바이트 차지
    user_index number,
    status number not null,
 );
 
 CREATE TABLE review(
    review_id number primary key,   --unique + not null   , index 생성
-   post_id references team(post_id),     -- 한글 3바이트 차지
+   post_id references team(post_id) on delete cascade,     -- 한글 3바이트 차지
    publisher VARCHAR2(60) not null,
    target_user_number number not null,
    review_text varchar2(100) not null,
@@ -70,8 +70,8 @@ CREATE TABLE review(
 );
 CREATE TABLE comment(
    comment_id number primary key,   --unique + not null   , index 생성
-   user_index references users(user_index),     -- 한글 3바이트 차지
-   post_id references board(post_id),
+   user_index references users(user_index) on delete cascade,     -- 한글 3바이트 차지
+   post_id references board(post_id) on delete cascade,
    comment_text varchar2(100) not null,
    comment_type varchar2(50) not null,
    comment_class number not null,

@@ -37,7 +37,7 @@
 	</insert>
 	
 	<select id="getPosts" resultMap="post_resultMap">
-		select b.post_id, b.user_index, b.title,b. region, b.meeting_method, b.project_stack, b.project_period, u.user_id from users u, board b where u.user_index = b.user_index order by b.post_id desc
+		select b.post_id, b.user_index, b.title,b. region, b.meeting_method, b.project_stack, b.project_period, u.user_id from users u, board b where u.user_index = b.user_index and b.board_type = 1 order by b.post_id desc
 	</select>
 	
 	<select id="getPost" parameterType="java.lang.String" resultMap="post_resultMap">

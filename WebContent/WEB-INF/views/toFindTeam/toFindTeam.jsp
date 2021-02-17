@@ -13,24 +13,53 @@
 <meta name="keywords" content="" />
 <link rel="stylesheet" href="/TeamFinder/css/toFindTeamCreate.css" />
 </head>
-	<body class="is-preload">
+
+<body class="is-preload">
 
 		<!-- Header -->
-			<header id="header">
-				<a class="logo" href="index.html">구해줘 팀즈</a>
-				<nav>
-					<a href="#menu">Menu</a>
-				</nav>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="elements.html">팀원 찾기</a></li>
-					<li><a href="/TeamFinder/toFindTeam">팀 찾기</a></li>
-				</ul>
-			</nav>
+		<header id="header">
+			<a class="logo" href="index">구해줘 팀즈</a>
+			
+			<c:choose>	
+				<c:when test="${sessionScope.loginCheck eq true}">
+			       ${sessionScope.id} 님이 로그인 되었습니다.
+			       <nav>
+				       	<a href="#menu">메뉴</a>
+				       
+				       	<nav id="menu">
+							<ul class="links">
+								<li><a href="index">Home</a></li>
+								<li><a href="modifyUser">마이 페이지</a></li>
+								<li><a href="toFindMate">팀원 구하기</a></li>
+								<li><a href="toFindTeam">팀 찾기</a></li>
+								<li><a id="logOut">로그 아웃</a></li>
+							</ul>
+						</nav>
+					</nav> 
+			       	<script type="text/javascript">
+							document.querySelector('#logOut').addEventListener('click', function(){
+								alert('로그아웃 되었습니다.');
+								location.href="/TeamFinder/logout.do";
+							});	
+					</script>		       
+				</c:when>
+				 <c:otherwise>
+					<nav>
+						<a href="#menu">로그인</a>
+						
+						<!-- Nav -->
+						<nav id="menu">
+							<ul class="links">
+								<li><a href="index">Home</a></li>
+								<li><a href="login">로그인</a></li>
+								<li><a href="signUp">회원가입</a></li>
+							</ul>
+						</nav>
+						
+					</nav>
+				 </c:otherwise>
+			</c:choose>
+		</header>
 
 		<!-- Heading -->
 			<div id="heading" >
@@ -52,9 +81,9 @@
 								<section>
 									<div class="content">
 										<header>
-											<form action="getPost" method="get" id="getPostForm${post.post_id}">
+											<form action="getPost" method="get" id="getPostForm">
 												<input type="hidden" name="post_id" value="${post.post_id}">
-												<a onclick="document.getElementById('getPostForm${post.post_id}').submit();" class="icon fa-vcard-o" style="vertical-align: middle"><span class="label">Icon</span></a><span style="vertical-align: middle">&nbsp${post.user.user_id}</span>
+												<a onclick="document.getElementById('getPostForm').submit();" class="icon fa-vcard-o" style="vertical-align: middle"><span class="label">Icon</span></a><span style="vertical-align: middle">&nbsp${post.user.user_id}</span>
 												<h3>${post.title}</h3>
 											</form>
 										</header>
@@ -72,9 +101,9 @@
 						<hr/>
 						
 						<!-- paging -->
-						
-						
-						<button value="작성하기" onclick="location.href='/TeamFinder/toFindTeamCreate';">작성하기</button>
+						<p align="right">
+							<button value="작성하기" onclick="location.href='/TeamFinder/toFindTeamCreate';">작성하기</button>
+						</p>
 					</div>
 				</div>
 			</section>

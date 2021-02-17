@@ -1,5 +1,6 @@
 package kr.co.multi.teamfinder.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,17 +38,19 @@ public class MainController {
 	}
 	
 	@PostMapping("/login.do")
-	public String login(HttpSession session, @ModelAttribute User user){
+	public String login(HttpServletRequest request, @ModelAttribute User user){
+		
+		HttpSession session = request.getSession();
 		
 		user.setUser_id(user.getUser_id());
 		user.setUser_pwd(user.getUser_pwd());
-		user.setUser_index(user.getUser_index());
-		User result = userService.login(user);
 		
+		User result = userService.login(user);
+						
 		if(result != null) {
 			session.setAttribute("loginCheck", true);
-			session.setAttribute("id", user.getUser_id());
-			session.setAttribute("user_index", user.getUser_index());
+			session.setAttribute("id", result.getUser_id());
+			session.setAttribute("user_index", result.getUser_index());
 			return "redirect:/index";
 		}else {
 			return "redirect:/login";
@@ -57,10 +60,8 @@ public class MainController {
 	
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
     public String logoutProcess(HttpSession session) {
-                            
-        session.setAttribute("loginCheck",null);
-        session.setAttribute("id",null);
-        session.setAttribute("user_index", session);
+                           
+        session.invalidate();
         
         return "redirect:/index";
     }

@@ -12,17 +12,6 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<link rel="stylesheet" href="/TeamFinder/css/main.css" />
-	
-	<script type="text/javascript">
-		window.onload = function(){
-			document.querySelector('#logOut').addEventListener('click', function(){
-				alert('로그아웃 되었습니다.');
-				location.href="/TeamFinder/logout.do";
-			});
-		}
-	
-	</script>
-
 
 </head>
 
@@ -31,27 +20,47 @@
 		<!-- Header -->
 		<header id="header">
 			<a class="logo" href="index">구해줘 팀즈</a>
+			
 			<c:choose>	
 				<c:when test="${sessionScope.loginCheck eq true}">
-			       ${sessionScope.id} 님이 로그인 되었습니다. 
-			       <input type="button" value="로그아웃" id="logOut"/>
+			       ${sessionScope.id} 님이 로그인 되었습니다.
+			       <nav>
+				       	<a href="#menu">메뉴</a>
+				       
+				       	<nav id="menu">
+							<ul class="links">
+								<li><a href="index">Home</a></li>
+								<li><a href="modifyUser">마이 페이지</a></li>
+								<li><a href="toFindMate">팀원 구하기</a></li>
+								<li><a href="toFindTeam">팀 찾기</a></li>
+								<li><a id="logOut">로그 아웃</a></li>
+							</ul>
+						</nav>
+					</nav> 
+			       	<script type="text/javascript">
+							document.querySelector('#logOut').addEventListener('click', function(){
+								alert('로그아웃 되었습니다.');
+								location.href="/TeamFinder/logout.do";
+							});	
+					</script>		       
 				</c:when>
 				 <c:otherwise>
 					<nav>
 						<a href="#menu">로그인</a>
+						
+						<!-- Nav -->
+						<nav id="menu">
+							<ul class="links">
+								<li><a href="index">Home</a></li>
+								<li><a href="login">로그인</a></li>
+								<li><a href="signUp">회원가입</a></li>
+							</ul>
+						</nav>
+						
 					</nav>
 				 </c:otherwise>
 			</c:choose>
 		</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="#">Home</a></li>
-					<li><a href="login">로그인</a></li>
-					<li><a href="signUp">회원가입</a></li>
-				</ul>
-			</nav>
 
 		<!-- Banner -->
 			<section id="banner">
@@ -67,7 +76,7 @@
 			<section class="wrapper">
 				<div class="inner">
 					<header class="special">
-						<a href="#" class="button primary1">팀원 구하기</a>
+						<a href="toFindMate" class="button primary1">팀원 구하기</a>
 						<a href="toFindTeam" class="button secondary">팀 찾기</a>
 					</header>
 					<div class="highlights">
