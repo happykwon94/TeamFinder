@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.multi.teamfinder.dto.Post;
@@ -23,17 +24,17 @@ public class toFindTeamController {
 		
 		model.addAttribute("posts", posts);
 		
-		return "toFindTeam";
+		return "/toFindTeam/toFindTeam";
 	}
 	
 	@GetMapping("/toFindTeamCreate")
 	public String toFindTeamCreate() {
-		return "toFindTeamCreate";
+		return "/toFindTeam/toFindTeamCreate";
 	}
 	
 	@GetMapping("/toFindTeamDetail")
 	public String toFindTeamDetail() {
-		return "toFindTeamDetail";
+		return "/toFindTeam/toFindTeamDetail";
 	}
 	
 	@PostMapping("/addPost")
@@ -46,5 +47,17 @@ public class toFindTeamController {
 		}
 		else
 			return "redirect:/";
+	}
+	
+	@GetMapping("/getPost/{post_id}")
+	public String getPost(@PathVariable(name="post_id")String post_id, Model model) {
+		
+		System.out.println("---------------------------------------- Check : "+post_id);
+		
+		Post post = postService.getPost(post_id);
+		
+		model.addAttribute("post", post);
+		
+		return "/toFindTeam/toFindeTeamDetail";
 	}
 }

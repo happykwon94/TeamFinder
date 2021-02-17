@@ -33,7 +33,6 @@ public class Post {
 	public Post(int post_id, String title, int user_index, String context, String project_period, String region,
 			String meeting_method, String recruiting_number, String team_image, String project_stack, Date upload_time,
 			int board_type, User user) {
-		super();
 		this.post_id = post_id;
 		this.title = title;
 		this.user_index = user_index;

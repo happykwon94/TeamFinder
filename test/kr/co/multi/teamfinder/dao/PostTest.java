@@ -13,7 +13,7 @@ import kr.co.multi.teamfinder.dto.Post;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = ApplicationConfig.class)
-public class AddPostTest {
+public class PostTest {
 
 	@Autowired
 	private PostMapper postMapper;
@@ -34,9 +34,7 @@ public class AddPostTest {
 		
 		System.out.println(post);
 		
-		postMapper.addPost(post);
-		
-		System.out.println("성공");
+		//postMapper.addPost(post);
 	}
 	
 	@Test
@@ -46,4 +44,10 @@ public class AddPostTest {
 		System.out.println(posts);
 	}
 	
+	@Test
+	public void getPost() throws Exception{
+		Post post = postMapper.getPost("2");
+		
+		System.out.println(post);
+	}
 }

@@ -30,4 +30,8 @@ public class PostService {
 		return postMapper.getPosts();
 	}
 	
+	public Post getPost(String post_id) {
+		return postMapper.getPost(post_id);
+	}
+	
 }

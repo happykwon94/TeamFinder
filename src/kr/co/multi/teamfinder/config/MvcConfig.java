@@ -15,7 +15,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
-		registry.jsp("/WEB-INF/views/toFindTeam/", ".jsp");
+		registry.jsp("/WEB-INF/views/", ".jsp");
 		// 경로, 확장자 / WEB-INF/views에 있는 .jsp를 view로 쓰겠다. / jsp는 url로 접근하여 내부 코드를 읽어올 수 있음, web-inf는 url로 접근 불가, 
 		//보안을 위해서 jsp파일을 web-inf에 넣어놓고 view는 내부적으로 web-inf에 접근시켜 사용하기도 함
 	}
@@ -36,7 +36,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	// url 설정, url이 ~로 들어오면 redirect로 날려줘
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addRedirectViewController("/", "/toFindTeam"); // '/'가 들어오면 '/hi'로 redirect 해줘
+		registry.addRedirectViewController("/", "/index"); // '/'가 들어오면 '/hi'로 redirect 해줘
 	}
 	
 	

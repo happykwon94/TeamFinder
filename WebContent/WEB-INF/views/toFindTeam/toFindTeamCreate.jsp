@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,6 @@
 	<meta name="keywords" content="" />
 	<link rel="stylesheet" href="/TeamFinder/css/toFindTeamCreate.css" />
 </head>
-
 
 <body class="is-preload">
 
@@ -46,7 +46,7 @@
 						<form action="addPost" method="post" id="addPostForm">
 							<input type="hidden" name="board_type" value="1"/>
 							<!-- 추후 회원 session에서 꺼내야 됌 -->
-							<input type="hidden" name="user_index" value="1"/>
+							<input type="hidden" name="user_index" value="${sessionScope.user_index}"/>
 							<table>
 								<tr>
 									<td><h3>주제</h3></td>

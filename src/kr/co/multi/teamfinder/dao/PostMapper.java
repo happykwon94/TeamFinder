@@ -13,4 +13,5 @@ public interface PostMapper {
 	
 	public List<Post> getPosts();
 	
+	public Post getPost(String post_id);
 }

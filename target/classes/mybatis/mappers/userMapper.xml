@@ -3,10 +3,27 @@
 
 <mapper namespace="kr.co.multi.teamfinder.dao.UserMapper">
 
-	<resultMap type="kr.co.multi.teamfinder.dto.User" id="user_resultMap"></resultMap>
+	<resultMap type="kr.co.multi.teamfinder.dto.User" id="user_resultMap">
+		<result column="user_index" property="user_index"/>
+		<result column="user_pwd" property="user_pwd"/>
+		<result column="region" property="region"/>
+		<result column="user_image" property="user_image"/>
+		<result column="user_stack" property="user_stack"/>
+		<result column="user_email" property="user_email"/>
+		<result column="user_id" property="user_id"/>	
+	</resultMap>
 	
-	<select id="getUser" parameterType="java.lang.Integer" resultMap="user_resultMap">
-		select * from users where user_index=#{id}
+	<insert id="addUser" parameterType="kr.co.multi.teamfinder.dto.User">
+		insert into users(user_index, user_pwd, region, user_image, user_stack, user_email, user_id) 
+		values(USER_SEQ.NEXTVAL ,#{user_pwd},#{region}, '0', '0', #{user_email}, #{user_id})
+	</insert>
+	
+	<select id="login" resultType="kr.co.multi.teamfinder.dto.User" resultMap="user_resultMap">
+		select user_index, user_pwd, region, user_image, user_stack, user_email, user_id from users where user_id = #{user_id} and user_Pwd = #{user_pwd}
+	</select>
+	
+	<select id="idCheck" resultType="int">
+		select count(*) from users where user_id = #{member_id}
 	</select>
 	
 </mapper>

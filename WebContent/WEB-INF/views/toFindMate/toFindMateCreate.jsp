@@ -1,23 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
-<title>구해줘 팀즈</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<link rel="stylesheet" href="/TeamFinder/css/toFindTeamCreate.css" />
+<link rel="stylesheet" href="/TeamFinder/css/main.css" />
+<title>구해줘 팀즈</title>
 </head>
 	<body class="is-preload">
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="index.html">구해줘 팀즈</a>
+				<a class="logo" href="index.html">Industrious</a>
 				<nav>
 					<a href="#menu">Menu</a>
 				</nav>
@@ -34,47 +34,64 @@
 
 		<!-- Heading -->
 			<div id="heading" >
-				<h1>구해줘 팀즈</h1>
-				<h4>너가 찾던 그 사람, 여기 다 있어</h4>
+				<h1>Generic Page</h1>
 			</div>
 
 		<!-- Main -->
 			<section id="main" class="wrapper">
 				<div class="inner">
 					<div class="mainContent">
-						
-						<!-- view Info -->
 						<header>
-							<h2>팀 구해요</h2>
+							<h2>Post</h2>
 						</header>
-						<div class="highlights">
-							<c:forEach var="post" items="${posts}">
-								<section>
-									<div class="content">
-										<header>
-											<form action="getPost" method="get" id="getPostForm${post.post_id}">
-												<input type="hidden" name="post_id" value="${post.post_id}">
-												<a onclick="document.getElementById('getPostForm${post.post_id}').submit();" class="icon fa-vcard-o" style="vertical-align: middle"><span class="label">Icon</span></a><span style="vertical-align: middle">&nbsp${post.user.user_id}</span>
-												<h3>${post.title}</h3>
-											</form>
-										</header>
-										<p>
-											${post.region} / ${post.meeting_method} / ${post.project_stack} / ${post.project_period}
-										</p>
-										
-										<hr/>
-										<p> 0일전 업데이트</p>
-									</div>
-								</section>
-							</c:forEach>
+						<div class="highlights" style="background:E6E6E6;" >
+							<c:set var="post" value="${post}">
+								<table class="tableLayout">
+														
+									<tr id="firstLine">
+										<td class="label" rowspan="2">제 목</td>
+										<td class="labelVal" rowspan="2" colspan="2">${post.title}</td>
+										<td class="emptySpace" rowspan="2" colspan="7"></td>				
+									</tr>
+									<tr>	
+									</tr>				
+									<tr>
+										<td class="label">글쓴이</td>
+										<td class="labelVal" colspan="2">${post.user.user_id}</td>
+										<td class="emptySpace" colspan="7"></td>	
+									</tr>
+									<tr>
+										<td class="label">활동 지역</td>
+										<td class="labelVal" colspan="2">${post.region}</td>
+										<td class="emptySpace" colspan="7"></td>							
+									</tr>
+									<tr>
+										<td class="label">기술 스택</td>
+										<td class="labelVal" colspan="2">${post.project_stack}</td>
+										<td class="emptySpace" colspan="7"></td>								
+									</tr>
+									<tr>
+										<td class="label">미팅 방식</td>
+										<td class="labelVal" colspan="2">${post.meeting_method}</td>
+										<td class="emptySpace" colspan="7"></td>								
+									</tr>
+									<tr>
+										<td class="label">예상 기간</td>
+										<td class="labelVal" colspan="2">${post.project_period}</td>
+										<td class="emptySpace" colspan="7"></td>								
+									</tr>
+									<tr>
+										<td colspan="10" class="context">${post.context}</td>
+									</tr>		
+								</table>
+							</c:set>						
 						</div>
-						
-						<hr/>
-						
-						<!-- paging -->
-						
-						
-						<button value="작성하기" onclick="location.href='/TeamFinder/toFindTeamCreate';">작성하기</button>
+						<div class="highlights" style="background:blue; height: 200px;">
+							<div>리뷰</div>
+						</div>
+						<div class="highlights" style="background:green; height: 100px;">
+							<div>댓글</div>
+						</div>					
 					</div>
 				</div>
 			</section>
@@ -111,13 +128,13 @@
 					</div>
 				</div>
 			</footer>
-
-		<!-- Scripts -->
+			
+			<!-- Scripts -->
 			<script src="/TeamFinder/js/jquery.min.js"></script>
 			<script src="/TeamFinder/js/browser.min.js"></script>
 			<script src="/TeamFinder/js/breakpoints.min.js"></script>
 			<script src="/TeamFinder/js/util.js"></script>
 			<script src="/TeamFinder/js/main.js"></script>
-
-	</body>
+		
+</body>
 </html>

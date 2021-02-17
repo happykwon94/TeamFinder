@@ -7,7 +7,28 @@ public class User {
 	private String user_image;
 	private String user_stack;
 	private String user_email;
+	private String region;
 	
+	public User(int user_index, String user_id, String user_pwd, String user_image, String user_stack,
+			String user_email, String region) {
+		super();
+		this.user_index = user_index;
+		this.user_id = user_id;
+		this.user_pwd = user_pwd;
+		this.user_image = user_image;
+		this.user_stack = user_stack;
+		this.user_email = user_email;
+		this.region = region;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
 	public User() {
 	}
 

@@ -1,6 +1,8 @@
 drop table users purge;
 drop table users cascade CONSTRAINT;
 
+drop sequence USER_SEQ;
+
 drop table board purge;
 drop table board cascade CONSTRAINT;
 
@@ -22,8 +24,11 @@ CREATE TABLE users(
    user_pwd VARCHAR2(20) not null,
    user_image varchar2(50),
    user_stack varchar2(50),
-   user_email varchar2(50) not null
+   user_email varchar2(50) not null,
+   region varchar2(20)
 );
+
+CREATE SEQUENCE USER_SEQ START WITH 1 INCREMENT BY 1 MAXVALUE 10000 MINVALUE 1;
 
 CREATE TABLE board(
    post_id number primary key,

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<link rel="stylesheet" href="/TeamFinder/css/toFindTeamCreate.css" />
+<link rel="stylesheet" href="/TeamFinder/css/toFindTeamDetail.css" />
 </head>
 	<body class="is-preload">
 
@@ -40,10 +41,49 @@
 				<div class="inner">
 					<div class="mainContent">
 						<header>
-							<h2>Feugiat consequat</h2>
+							<h2>Post</h2>
 						</header>
-						<div class="highlights" style="background:red; height: 300px;" >
-							<div>소개</div>
+						<div class="highlights" style="background:E6E6E6;" >
+							<c:set var="post" value="${post}">
+								<table class="tableLayout">
+														
+									<tr id="firstLine">
+										<td class="label" rowspan="2">제 목</td>
+										<td class="labelVal" rowspan="2" colspan="2">${post.title}</td>
+										<td class="emptySpace" rowspan="2" colspan="7"></td>				
+									</tr>
+									<tr>	
+									</tr>				
+									<tr>
+										<td class="label">글쓴이</td>
+										<td class="labelVal" colspan="2">${post.user.user_id}</td>
+										<td class="emptySpace" colspan="7"></td>	
+									</tr>
+									<tr>
+										<td class="label">활동 지역</td>
+										<td class="labelVal" colspan="2">${post.region}</td>
+										<td class="emptySpace" colspan="7"></td>							
+									</tr>
+									<tr>
+										<td class="label">기술 스택</td>
+										<td class="labelVal" colspan="2">${post.project_stack}</td>
+										<td class="emptySpace" colspan="7"></td>								
+									</tr>
+									<tr>
+										<td class="label">미팅 방식</td>
+										<td class="labelVal" colspan="2">${post.meeting_method}</td>
+										<td class="emptySpace" colspan="7"></td>								
+									</tr>
+									<tr>
+										<td class="label">예상 기간</td>
+										<td class="labelVal" colspan="2">${post.project_period}</td>
+										<td class="emptySpace" colspan="7"></td>								
+									</tr>
+									<tr>
+										<td colspan="10" class="context">${post.context}</td>
+									</tr>		
+								</table>
+							</c:set>						
 						</div>
 						<div class="highlights" style="background:blue; height: 200px;">
 							<div>리뷰</div>
