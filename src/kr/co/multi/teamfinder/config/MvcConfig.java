@@ -36,7 +36,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	// url 설정, url이 ~로 들어오면 redirect로 날려줘
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addRedirectViewController("/", "/toFindTeamCreate"); // '/'가 들어오면 '/hi'로 redirect 해줘
+		registry.addRedirectViewController("/", "/toFindTeam"); // '/'가 들어오면 '/hi'로 redirect 해줘
 	}
 	
 	

@@ -1,7 +1,10 @@
 package kr.co.multi.teamfinder.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -14,14 +17,18 @@ public class toFindTeamController {
 	@Autowired
 	private PostService postService;
 	
+	@GetMapping("/toFindTeam")
+	public String toFindTeam(Model model) {
+		List<Post> posts = postService.getPosts();
+		
+		model.addAttribute("posts", posts);
+		
+		return "toFindTeam";
+	}
+	
 	@GetMapping("/toFindTeamCreate")
 	public String toFindTeamCreate() {
 		return "toFindTeamCreate";
-	}
-	
-	@GetMapping("/toFindTeam")
-	public String toFindTeam() {
-		return "toFindTeam";
 	}
 	
 	@GetMapping("/toFindTeamDetail")
@@ -31,14 +38,11 @@ public class toFindTeamController {
 	
 	@PostMapping("/addPost")
 	public String addPost(Post post) {
-		
-		System.out.println(post);
-		
+				
 		int result = postService.addPost(post);
 				
 		if(result == 1) {
-			System.out.println("성공");
-			return "redirect:/";
+			return "redirect:/toFindTeam";
 		}
 		else
 			return "redirect:/";

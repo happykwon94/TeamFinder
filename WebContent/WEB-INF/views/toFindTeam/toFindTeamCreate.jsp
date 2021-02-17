@@ -26,8 +26,8 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="elements.html">Elements</a></li>
-					<li><a href="generic.html">Generic</a></li>
+					<li><a href="elements.html">팀원 찾기</a></li>
+					<li><a href="/TeamFinder/toFindTeam">팀 찾기</a></li>
 				</ul>
 			</nav>
 
@@ -44,8 +44,8 @@
 							<h2>게시글 작성</h2>
 						</header>
 						<form action="addPost" method="post" id="addPostForm">
-							<input type="hidden" name="post_id" value="1"/>
 							<input type="hidden" name="board_type" value="1"/>
+							<!-- 추후 회원 session에서 꺼내야 됌 -->
 							<input type="hidden" name="user_index" value="1"/>
 							<table>
 								<tr>

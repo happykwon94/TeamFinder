@@ -1,18 +1,16 @@
-<!DOCTYPE HTML>
-<!--
-	Industrious by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Generic Page - Industrious by TEMPLATED</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="../../assets/css/toFindTeamDetail.css" />
-	</head>
+<head>
+<meta charset="UTF-8">
+<title>Generic Page - Industrious by TEMPLATED</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" href="/TeamFinder/css/toFindTeamCreate.css" />
+</head>
 	<body class="is-preload">
 
 		<!-- Header -->
@@ -27,8 +25,8 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="elements.html">Elements</a></li>
-					<li><a href="generic.html">Generic</a></li>
+					<li><a href="elements.html">팀원 찾기</a></li>
+					<li><a href="/TeamFinder/toFindTeam">팀 찾기</a></li>
 				</ul>
 			</nav>
 
@@ -91,11 +89,11 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="/TeamFinder/js/jquery.min.js"></script>
+			<script src="/TeamFinder/js/browser.min.js"></script>
+			<script src="/TeamFinder/js/breakpoints.min.js"></script>
+			<script src="/TeamFinder/js/util.js"></script>
+			<script src="/TeamFinder/js/main.js"></script>
 
 	</body>
 </html>

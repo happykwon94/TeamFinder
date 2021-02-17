@@ -1,5 +1,7 @@
 package kr.co.multi.teamfinder.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,10 @@ public class PostService {
 		}
 		
 		return returnVal;
+	}
+	
+	public List<Post> getPosts(){
+		return postMapper.getPosts();
 	}
 	
 }

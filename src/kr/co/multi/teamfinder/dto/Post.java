@@ -16,6 +16,39 @@ public class Post {
 	private Date upload_time;
 	private int board_type;
 	
+	private User user;
+	
+	
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public Post(int post_id, String title, int user_index, String context, String project_period, String region,
+			String meeting_method, String recruiting_number, String team_image, String project_stack, Date upload_time,
+			int board_type, User user) {
+		super();
+		this.post_id = post_id;
+		this.title = title;
+		this.user_index = user_index;
+		this.context = context;
+		this.project_period = project_period;
+		this.region = region;
+		this.meeting_method = meeting_method;
+		this.recruiting_number = recruiting_number;
+		this.team_image = team_image;
+		this.project_stack = project_stack;
+		this.upload_time = upload_time;
+		this.board_type = board_type;
+		this.user = user;
+	}
+
 
 	public Post(int post_id, String title, int user_index, String context, String project_period, String region,
 			String meeting_method, String recruiting_number, String team_image, String project_stack, Date upload_time,

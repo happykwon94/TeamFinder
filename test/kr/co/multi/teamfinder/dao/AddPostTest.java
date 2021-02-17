@@ -1,5 +1,7 @@
 package kr.co.multi.teamfinder.dao;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,6 @@ public class AddPostTest {
 	public void addPost() throws Exception{
 		
 		Post post = new Post();
-		post.setPost_id(1);
 		post.setTitle("주제1");
 		post.setUser_index(1);
 		post.setContext("본문1");
@@ -36,6 +37,13 @@ public class AddPostTest {
 		postMapper.addPost(post);
 		
 		System.out.println("성공");
+	}
+	
+	@Test
+	public void getPosts() throws Exception{
+		List<Post> posts = postMapper.getPosts();
+		
+		System.out.println(posts);
 	}
 	
 }
