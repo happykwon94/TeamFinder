@@ -79,68 +79,95 @@
 						<a href="toFindMate" class="button primary1">팀원 구하기</a>
 						<a href="toFindTeam" class="button secondary">팀 찾기</a>
 					</header>
+					
+					<header class="special">
+							<h2>팀원 구하기</h2>
+					</header>
 					<div class="highlights">
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fa-vcard-o"><span class="label">Icon</span></a>
-									<h3>10년차 프로젝트 매니저 JAVA,Python,C++...</h3>
-								</header>
-								<p>저희 팀은 Java 활용자를 구하고 있습니다. Spring 경험이 있으신 분도 구하고 있습니다.</p>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-								<h3>10년차 프로젝트 매니저 JAVA,Python,C++...</h3>
-								</header>
-								<p>저희 팀은 Java 활용자를 구하고 있습니다. Spring 경험이 있으신 분도 구하고 있습니다.</p>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fa-floppy-o"><span class="label">Icon</span></a>
-									<h3>10년차 프로젝트 매니저 JAVA,Python,C++...</h3>
-								</header>
-								<p>저희 팀은 Java 활용자를 구하고 있습니다. Spring 경험이 있으신 분도 구하고 있습니다. </p>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fa-line-chart"><span class="label">Icon</span></a>
-									<h3>반응형 웹사이트 개발 프로젝트 참여하고 싶습니다.</h3>
-								</header>
-								<p>Java를 활용한 반응형 웹사이트 관련 멀티캠퍼스 강의 수강한 경험이 있습니다. ...</p>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
-										<h3>반응형 웹사이트 개발 프로젝트 참여하고 싶습니다.</h3>
-								</header>
-								<p>Java를 활용한 반응형 웹사이트 관련 멀티캠퍼스 강의 수강한 경험이 있습니다. ...</p>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fa-qrcode"><span class="label">Icon</span></a>
-										<h3>반응형 웹사이트 개발 프로젝트 참여하고 싶습니다.</h3>
-								</header>
-								<p>Java를 활용한 반응형 웹사이트 관련 멀티캠퍼스 강의 수강한 경험이 있습니다. ...</p>
-							</div>
-						</section>
+
+						<!-- teamList -->
+						<c:forEach var="team" items="${teamList}">
+								<section>
+									<div class="content">
+										<header>
+											<form action="getPost" method="get" id="getPostForm${team.post_id}">
+												<input type="hidden" name="post_id" value="${team.post_id}">
+												<a onclick="document.getElementById('getPostForm${team.post_id}').submit();" class="icon fa-vcard-o" style="vertical-align: middle"><span class="label">Icon</span></a><span style="vertical-align: middle">&nbsp${team.user.user_id}</span>
+												<h3>${team.title}</h3>
+											</form>
+										</header>
+										<p>
+											${team.region} / ${team.meeting_method} / ${team.project_stack} / ${team.project_period}
+										</p>
+										
+										<hr/>
+										<p> 0일전 업데이트</p>
+									</div>
+								</section>
+						</c:forEach>
+					</div>
+						
+						<header class="special">
+							<h2>팀 찾기</h2>
+						</header>
+						
+					<div class="highlights">
+						<!-- mateList -->
+						<c:forEach var="mate" items="${mateList}">
+							<section>
+								<div class="content">
+									<header>
+										<form action="getPost" method="get" id="getPostForm${mate.post_id}">
+											<input type="hidden" name="post_id" value="${mate.post_id}">
+											<a onclick="document.getElementById('getPostForm${mate.post_id}').submit();" class="icon fa-vcard-o" style="vertical-align: middle"><span class="label">Icon</span></a><span style="vertical-align: middle">&nbsp${mate.user.user_id}</span>
+											<h3>${mate.title}</h3>
+										</form>
+									</header>
+									<p>
+										${mate.region} / ${mate.meeting_method} / ${mate.project_stack} / ${mate.project_period}
+									</p>
+									
+									<hr/>
+									<p> 0일전 업데이트</p>
+								</div>
+							</section>
+						</c:forEach>
+
 					</div>
 				</div>
 			</section>
 
-<!-- 
-CTA, Testi, footer비움
- -->
+
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="content">
+						<section>
+							<h3>MultiCampus 청년취업아카데미</h3>
+							<p>자바 알고리즘을 이용한 반응형 웹 프로그래밍 전문가 과정(D반)</p>
+						</section>
+						<section>
+							<h4>Member</h4>
+							<ul class="plain">
+								<li><a href="https://github.com/20odeebh" target="_blank">&nbsp;20odeebh&nbsp;</a> / <a href="https://github.com/happykwon94" target="_blank">&nbsp;happykwon94</a></li>
+								<li><a href="https://github.com/hangyujung" target="_blank">&nbsp;hangyujung&nbsp;</a> / <a href="https://github.com/moonyy7012" target="_blank">&nbsp;moonyy7012</a></li>
+							</ul>
+						</section>
+						<section>
+							<h4>SNS</h4>
+							<ul class="plain">
+								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+							</ul>
+						</section>
+					</div>
+					<div class="copyright">
+						&copy; Untitled. Photos <a href="https://unsplash.co">Unsplash</a>, Video <a href="https://coverr.co">Coverr</a>.
+					</div>
+				</div>
+			</footer>
+
+
 		<!-- Scripts -->
 			<script src="/TeamFinder/js/jquery.min.js"></script>
 			<script src="/TeamFinder/js/browser.min.js"></script>

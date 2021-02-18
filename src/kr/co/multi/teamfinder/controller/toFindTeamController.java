@@ -58,11 +58,7 @@ public class toFindTeamController {
 	@RequestMapping(value="/getPost", method = RequestMethod.GET)
 	public String getPost(HttpServletRequest request, Model model, HttpSession session) {
 		
-		System.out.println("getPost : "+request.getParameter("post_id"));
-		
 		Post post = postService.getPost(request.getParameter("post_id"));
-		
-		System.out.println(post);
 		
 		model.addAttribute("post", post);
 		

@@ -64,7 +64,6 @@
 		<!-- Heading -->
 			<div id="heading" >
 				<h1>구해줘 팀즈</h1>
-				<h4>너가 찾던 그 사람, 여기 다 있어</h4>
 			</div>
 
 		<!-- Main -->
@@ -81,9 +80,9 @@
 								<section>
 									<div class="content">
 										<header>
-											<form action="getPost" method="get" id="getPostForm">
+											<form action="getPost" method="get" id="getPostForm${post.post_id}">
 												<input type="hidden" name="post_id" value="${post.post_id}">
-												<a onclick="document.getElementById('getPostForm').submit();" class="icon fa-vcard-o" style="vertical-align: middle"><span class="label">Icon</span></a><span style="vertical-align: middle">&nbsp${post.user.user_id}</span>
+												<a onclick="document.getElementById('getPostForm${post.post_id}').submit();" class="icon fa-vcard-o" style="vertical-align: middle"><span class="label">Icon</span></a><span style="vertical-align: middle">&nbsp${post.user.user_id}</span>
 												<h3>${post.title}</h3>
 											</form>
 										</header>
@@ -108,30 +107,26 @@
 				</div>
 			</section>
 
-		<!-- Footer -->
+			<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
 					<div class="content">
 						<section>
-							<h3>Accumsan montes viverra</h3>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+							<h3>MultiCampus 청년취업아카데미</h3>
+							<p>자바 알고리즘을 이용한 반응형 웹 프로그래밍 전문가 과정(D반)</p>
 						</section>
 						<section>
-							<h4>Sem turpis amet semper</h4>
-							<ul class="alt">
-								<li><a href="#">Dolor pulvinar sed etiam.</a></li>
-								<li><a href="#">Etiam vel lorem sed amet.</a></li>
-								<li><a href="#">Felis enim feugiat viverra.</a></li>
-								<li><a href="#">Dolor pulvinar magna etiam.</a></li>
+							<h4>Member</h4>
+							<ul class="plain">
+								<li><a href="https://github.com/20odeebh" target="_blank">&nbsp;20odeebh&nbsp;</a> / <a href="https://github.com/happykwon94" target="_blank">&nbsp;happykwon94</a></li>
+								<li><a href="https://github.com/hangyujung" target="_blank">&nbsp;hangyujung&nbsp;</a> / <a href="https://github.com/moonyy7012" target="_blank">&nbsp;moonyy7012</a></li>
 							</ul>
 						</section>
 						<section>
-							<h4>Magna sed ipsum</h4>
+							<h4>SNS</h4>
 							<ul class="plain">
-								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
 							</ul>
 						</section>
 					</div>

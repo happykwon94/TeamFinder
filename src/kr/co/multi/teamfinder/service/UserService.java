@@ -1,9 +1,12 @@
 package kr.co.multi.teamfinder.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.multi.teamfinder.dao.UserMapper;
+import kr.co.multi.teamfinder.dto.Post;
 import kr.co.multi.teamfinder.dto.User;
 
 @Service
@@ -54,6 +57,10 @@ public class UserService {
 	
 	public int idCheck(String memberId) throws Exception {
 		return userMapper.idCheck(memberId);
+	}
+	
+	public List<Post> getPostsbyBoardType(int type){
+		return userMapper.getPostsbyBoardType(type);
 	}
 	
 }

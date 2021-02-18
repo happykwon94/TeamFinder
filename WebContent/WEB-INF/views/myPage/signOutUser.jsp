@@ -66,7 +66,7 @@
 
 		<!-- Heading -->
 			<div id="heading" >
-				<h1>회원 탈퇴</h1>	
+				<h1>구해줘 팀즈</h1>	
 			</div>
 
 
@@ -74,6 +74,9 @@
 			<section id="main" class="wrapper">
 				<div class="inner">
 					<div class="content" align="center">
+						<header>
+							<h2>회원 탈퇴</h2>
+						</header>
 						<img src="/TeamFinder/images/user.jpg" height="100" width="100">
 						<br>
 						<form action="signOut" method="post">
@@ -96,30 +99,26 @@
 				</div>
 			</section>
 
-		<!-- Footer -->
+			<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
 					<div class="content">
 						<section>
-							<h3>Accumsan montes viverra</h3>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+							<h3>MultiCampus 청년취업아카데미</h3>
+							<p>자바 알고리즘을 이용한 반응형 웹 프로그래밍 전문가 과정(D반)</p>
 						</section>
 						<section>
-							<h4>Sem turpis amet semper</h4>
-							<ul class="alt">
-								<li><a href="#">Dolor pulvinar sed etiam.</a></li>
-								<li><a href="#">Etiam vel lorem sed amet.</a></li>
-								<li><a href="#">Felis enim feugiat viverra.</a></li>
-								<li><a href="#">Dolor pulvinar magna etiam.</a></li>
+							<h4>Member</h4>
+							<ul class="plain">
+								<li><a href="https://github.com/20odeebh" target="_blank">&nbsp;20odeebh&nbsp;</a> / <a href="https://github.com/happykwon94" target="_blank">&nbsp;happykwon94</a></li>
+								<li><a href="https://github.com/hangyujung" target="_blank">&nbsp;hangyujung&nbsp;</a> / <a href="https://github.com/moonyy7012" target="_blank">&nbsp;moonyy7012</a></li>
 							</ul>
 						</section>
 						<section>
-							<h4>Magna sed ipsum</h4>
+							<h4>SNS</h4>
 							<ul class="plain">
-								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
 							</ul>
 						</section>
 					</div>

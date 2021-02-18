@@ -577,7 +577,7 @@ ul {
         border-radius: 4px;
         color: #ffffff;
         display: inline-block;
-        margin-right: 1rem;
+        /*여기*/
         text-align: center;
         width: 2rem;
         height: 2rem;
@@ -2209,7 +2209,7 @@ ul.icons {
 #footer {
   background-color: #111111;
   color: rgba(255, 255, 255, 0.5);
-  padding: 8rem 0 6rem 0 ; }
+  padding: 2rem 0 2rem 0 ; } /* 여기 */
   #footer input, #footer select, #footer textarea {
     color: #ffffff; }
   #footer a {
@@ -2389,8 +2389,7 @@ ul.icons {
       padding: 2rem 0 0.1rem 0 ; } }
 
 /* Header */
-body {
-  padding-top: 3.25rem; }
+body { }
   body:before {
     content: ' ';
     background-image: url(/TeamFinder/images/bg.jpg);

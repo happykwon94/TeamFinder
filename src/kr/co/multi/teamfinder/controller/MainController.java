@@ -1,10 +1,13 @@
 package kr.co.multi.teamfinder.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.multi.teamfinder.dto.Post;
 import kr.co.multi.teamfinder.dto.User;
 import kr.co.multi.teamfinder.service.UserService;
 
@@ -22,8 +26,16 @@ public class MainController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/index")
-	public String index() {
+	@RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
+//	@GetMapping("/index")
+	public String index(Model model) {
+		
+		List<Post>  teamList = userService.getPostsbyBoardType(1);
+		List<Post>  mateList = userService.getPostsbyBoardType(0);
+		
+		model.addAttribute("teamList", teamList);
+		model.addAttribute("mateList", mateList);
+		
 		return "/main/index";
 	}
 	
